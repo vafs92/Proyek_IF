@@ -1,29 +1,29 @@
 $(function () {
 
-    $('.tombolTambahDataR').on('click', function () {
-        $('#formModalLabelR').html('Tambah Data Ruang');
-        $('.modal-footer button[type=submit]').html('Tambah Data');
+    // $('.tombolTambahDataR').on('click', function () {
+    //     $('#formModalLabelR').html('Tambah Data Ruang');
+    //     $('.modal-footer button[type=submit]').html('Tambah Data');
 
-    });
+    // });
 
-    $('.tampilModalUbahR').on('click', function () {
-        $('#formModalLabelR').html('Ubah Data Ruang');
-        $('.modal-footer button[type=submit]').html('Ubah Data');
-        $('.modal-body form').attr('action', 'http://localhost/Tugas_mvc/public/perekaman/editR');
+    // $('.tampilModalUbahR').on('click', function () {
+    //     $('#formModalLabelR').html('Ubah Data Ruang');
+    //     $('.modal-footer button[type=submit]').html('Ubah Data');
+    //     $('.modal-body form').attr('action', 'http://localhost/Tugas_mvc/public/perekaman/editR');
 
-        const id = $(this).data('id');
+    //     const id = $(this).data('id');
 
-        $.ajax({
-            url: 'http://localhost/Tugas_mvc/public/perekaman/getubahR',
-            data: { id: id },
-            method: 'post',
-            dataType: 'json',
-            success: function (data) {
-                $('#kodeR').val(data.kodeR);
-                $('#namaR').val(data.namaR);
-            }
-        });
-    });
+    //     $.ajax({
+    //         url: 'http://localhost/Tugas_mvc/public/perekaman/getubahR',
+    //         data: { id: id },
+    //         method: 'post',
+    //         dataType: 'json',
+    //         success: function (data) {
+    //             $('#kodeR').val(data.kodeR);
+    //             $('#namaR').val(data.namaR);
+    //         }
+    //     });
+    // });
 
     $('#option').on('change', function () {
         $('#kode').val('');
