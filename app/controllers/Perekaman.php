@@ -38,30 +38,24 @@ class Perekaman extends Controller
 		$this->view('templates/footer', $data);
 	}
 
-	public function tambahR()
-	{
-		if ($this->model('Model_PerekamanR')->tambahDataR($_POST) > 0) {
-			Flasher::setFlash('berhasil', ' ditambahkan', 'success');
-		} else {
-			Flasher::setFlash('gagal', ' ditambahkan', 'danger');
-		}
-		header('Location: ' . BASEURL . '/perekaman/ruang');
-		exit;
-	}
+	public function tambahR() {
+		$Foto = $this->model('Model_PerekamanR')->unggahFoto(); // Mengambil nama file yang diunggah
 
-	public function tambahB()
-	{
-		if ($this->model('Model_PerekamanB')->tambahDataB($_POST) > 0) {
-			Flasher::setFlash('berhasil', ' ditambahkan', 'success');
-			header('Location: ' . BASEURL . '/perekaman/barang');
-			exit;
+		if ($Foto) {
+			if ($this->model('Model_PerekamanR')->tambahDataR($_POST, $Foto) > 0) {
+				Flasher::setFlash('berhasil', ' ditambahkan', 'success');
+				header('Location: ' . BASEURL . '/perekaman/ruang');
+				exit;
+			} else {
+				Flasher::setFlash('gagal', ' ditambahkan', 'danger');
+				header('Location: ' . BASEURL . '/perekaman/ruang');
+				exit;
+			}
 		} else {
-			Flasher::setFlash('gagal', ' ditambahkan', 'danger');
-			header('Location: ' . BASEURL . '/perekaman/barang');
-			exit;
+			// Handle kesalahan pengunggahan file
+			// Anda dapat menampilkan pesan kesalahan atau melakukan tindakan sesuai kebutuhan
 		}
-	}
-
+	}	
 	public function hapusR($kodeR)
 	{
 		if ($this->model('Model_PerekamanR')->hapusDataR($kodeR) > 0) {
@@ -74,7 +68,24 @@ class Perekaman extends Controller
 			exit;
 		}
 	}
+	public function tambahB() {
+		$Foto = $this->model('Model_PerekamanB')->unggahFoto(); // Mengambil nama file yang diunggah
 
+		if ($Foto) {
+			if ($this->model('Model_PerekamanB')->tambahDataB($_POST, $Foto) > 0) {
+				Flasher::setFlash('berhasil', ' ditambahkan', 'success');
+				header('Location: ' . BASEURL . '/perekaman/barang');
+				exit;
+			} else {
+				Flasher::setFlash('gagal', ' ditambahkan', 'danger');
+				header('Location: ' . BASEURL . '/perekaman/barang');
+				exit;
+			}
+		} else {
+			// Handle kesalahan pengunggahan file
+			// Anda dapat menampilkan pesan kesalahan atau melakukan tindakan sesuai kebutuhan
+		}
+	}
 	public function hapusB($kodeB)
 	{
 		if ($this->model('Model_PerekamanB')->hapusDataB($kodeB) > 0) {
@@ -100,12 +111,10 @@ class Perekaman extends Controller
 		$id = $_POST['id'];
 		$data = $this->model('Model_PerekamanB')->getPerekamanByKodeB($id);
 		echo json_encode($data);
-		// echo json_encode($this->model('Model_PerekamanR')->getPerekamanByKodeR($_POST['kodeR']));
 	}
 
 	public function editR()
 	{
-		// 	if($this->model('Model_PerekamanR')->ubahDataR($_POST)>0){
 		$kodeR = $_POST['kodeR'];
 		$namaR = $_POST['namaR'];
 
@@ -122,7 +131,6 @@ class Perekaman extends Controller
 
 	public function editB()
 	{
-		// 	if($this->model('Model_PerekamanR')->ubahDataR($_POST)>0){
 		$kodeB = $_POST['kodeB'];
 		$namaB = $_POST['namaB'];
 
