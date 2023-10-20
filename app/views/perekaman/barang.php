@@ -85,12 +85,12 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="formModalLabelB">Tambah Data</h5>
+				<h5 class="modal-title" id="formModalLabelB">Edit Data</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
 
-				<form action="<?= BASEURL; ?>/perekaman/tambahB" method="post" enctype="multipart/form-data">
+				<form action="<?= BASEURL; ?>/perekaman/editB" method="post" enctype="multipart/form-data">
 					<!-- <input type="hidden" name="id" id="id"> -->
 					<div class="mb-3">
 						<label for="kodeB" class="form-label">Kode Barang</label>
@@ -108,7 +108,7 @@
 			<div class="modal-footer">
 				<a href="<?= BASEURL; ?>/perekaman/barang"><button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">Close</button></a>
-				<button type="submit" class="btn btn-success">Tambah Data</button>
+				<button type="submit" class="btn btn-success">Simpan Perubahan</button>
 				</form>
 			</div>
 		</div>
