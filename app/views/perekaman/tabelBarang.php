@@ -38,6 +38,7 @@
                         <tr>
                             <th>Kode Barang</th>
                             <th>Nama Barang</th>
+							<th>Foto</th>
                         </tr>
                     </thead>	
                     <tbody>
@@ -45,6 +46,10 @@
                             <tr>
                                 <td><?= $barang['kodeB'] ?></td>
                                 <td><?= $barang['namaB'] ?></td>
+								<td>
+								<a href="<?= BASEURL; ?>/detail/showTB/<?= $barang['kodeB']; ?>"
+									class="btn btn-danger ms-1" style="color:black"
+									data-id="<?= $barang['kodeB']; ?>">View</a>	</td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -52,3 +57,4 @@
 		</div>
 	</div>
 </div>
+
